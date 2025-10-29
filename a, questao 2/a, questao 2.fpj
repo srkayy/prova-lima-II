@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Libs Value=""/>
+	<Flags Value=""/>
+	<Target Value="a, questao 2.exe"/>
+	<CommandLine Value=""/>
+	<CompilerOptions Value="-Wall -s"/>
+	<DeleteObjectsBefore Value="Yes"/>
+	<DeleteObjectsAfter Value="Yes"/>
+	<DeleteMakefileAfter Value="Yes"/>
+	<DeleteResourcesAfter Value="Yes"/>
+	<EnableTheme Value="No"/>
+	<RequiresAdmin Value="No"/>
+	<CompilerType Value="CPP"/>
+	<AppType Value="CONSOLE"/>
+	<Files>
+		<File Name="main.cpp"/>
+		<File Name="bst.cpp"/>
+		<File Name="bst.h"/>
+	</Files>
+</Project>

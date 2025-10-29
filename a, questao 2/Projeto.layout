@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+	<Files>
+		<File Name="main.cpp" Top="Yes" Tabpos="1" TopLine="39">
+			<Cursor Line="84" Column="13"/>
+		</File>
+		<File Name="bst.h" Top="No" Tabpos="2" TopLine="1">
+			<Cursor Line="5" Column="8"/>
+		</File>
+		<File Name="bst.cpp" Top="No" Tabpos="3" TopLine="99">
+			<Cursor Line="108" Column="1"/>
+		</File>
+	</Files>
+</Layout>
