@@ -3,22 +3,25 @@
 
 using namespace std;
 
+// Construtor do no
 Node::Node(int value) : key(value), left(NULL), right(NULL) {}
 
+// Construtor da arvore inicia raiz como vazia
 BST::BST() : root(NULL) {}
 
+// Insercao recursiva na BST
 Node* BST::insertRecursive(Node* node, int key) {
     if (node == NULL) {
-        return new Node(key);
+        return new Node(key); // Cria novo no se posicao correta for encontrada
     }
     
     if (key < node->key) {
-        node->left = insertRecursive(node->left, key);
+        node->left = insertRecursive(node->left, key);  // Insere na subarvore esquerda
     } else if (key > node->key) {
-        node->right = insertRecursive(node->right, key);
+        node->right = insertRecursive(node->right, key); // Insere na subarvore direita
     }
     
-    return node;
+    return node; // Retorna o proprio no
 }
 
 void BST::insert(int key) {
@@ -45,11 +48,11 @@ void BST::inOrder() {
 
 int BST::findMaxRecursive(Node* node) {
     if (node == NULL) {
-        return -1;
+        return -1; // Indicador de que a arvore esta vazia
     }
     
     if (node->right == NULL) {
-        return node->key;
+        return node->key; // O maior esta no no mais a direita
     }
     
     return findMaxRecursive(node->right);
@@ -59,18 +62,20 @@ int BST::findMax() {
     return findMaxRecursive(root);
 }
 
+// Limpa a arvore
 void BST::clear() {
     root = NULL;
 }
 
+// Carrega valores padrao na BST
 void BST::loadDefaultValues() {
-    clear();
+    clear(); // Reinicia a arvore
     
     int valores[] = {20, 5, 12, 36, 27, 45, 9, 2, 6, 17, 40};
     int tamanho = sizeof(valores) / sizeof(valores[0]);
     
     for (int i = 0; i < tamanho; i++) {
-        insert(valores[i]);
+        insert(valores[i]); // Insere cada numero
     }
     cout << "  Valores iniciais carregados!\n";
 }
