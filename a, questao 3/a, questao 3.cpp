@@ -20,7 +20,7 @@ struct Pessoa {
     }
 };
 
-// Nó da Árvore Binária
+// NÃ³ da Ãrvore BinÃ¡ria
 struct NoArvore {
     Pessoa pessoa;
     NoArvore* esquerda;
@@ -33,7 +33,7 @@ struct NoArvore {
     }
 };
 
-// Nó da Lista Encadeada
+// NÃ³ da Lista Encadeada
 struct NoLista {
     Pessoa pessoa;
     NoLista* proximo;
@@ -44,10 +44,10 @@ struct NoLista {
     }
 };
 
-// Ponteiro RAIZ conforme exigido no enunciado
+// Ponteiro RAIZ 
 NoArvore* RAIZ = NULL;
 
-// Funções da Árvore
+// FunÃ§Ãµes da Ãrvore
 NoArvore* inserirArvore(NoArvore* node, Pessoa p) {
     if (node == NULL) {
         return new NoArvore(p);
@@ -66,7 +66,7 @@ void inserirPessoa(Pessoa p) {
     RAIZ = inserirArvore(RAIZ, p);
 }
 
-// Função para inserir ordenado na lista
+// FunÃ§Ã£o para inserir ordenado na lista
 void inserirOrdenadoLista(NoLista** lista, Pessoa p) {
     NoLista* novo = new NoLista(p);
     
@@ -78,14 +78,14 @@ void inserirOrdenadoLista(NoLista** lista, Pessoa p) {
     NoLista* atual = *lista;
     NoLista* anterior = NULL;
     
-    // Encontrar posição correta para manter ordenado por nome
+    // Encontrar posiÃ§Ã£o correta para manter ordenado por nome
     while (atual != NULL && atual->pessoa.nome < p.nome) {
         anterior = atual;
         atual = atual->proximo;
     }
     
     if (anterior == NULL) {
-        // Inserir no início
+        // Inserir no inÃ­cio
         novo->proximo = *lista;
         *lista = novo;
     } else {
@@ -95,7 +95,7 @@ void inserirOrdenadoLista(NoLista** lista, Pessoa p) {
     }
 }
 
-// Função recursiva para percorrer a árvore em ordem
+// FunÃ§Ã£o recursiva para percorrer a Ã¡rvore em ordem
 void percorrerInOrder(NoArvore* node, NoLista** listaHomens, NoLista** listaMulheres) {
     if (node == NULL) return;
     
@@ -111,14 +111,13 @@ void percorrerInOrder(NoArvore* node, NoLista** listaHomens, NoLista** listaMulh
     percorrerInOrder(node->direita, listaHomens, listaMulheres);
 }
 
-// ALGORITMO PRINCIPAL conforme enunciado
 void gerarListasOrdenadas(NoLista** listaHomens, NoLista** listaMulheres) {
     *listaHomens = NULL;
     *listaMulheres = NULL;
     percorrerInOrder(RAIZ, listaHomens, listaMulheres);
 }
 
-// Funções para exibir listas
+// FunÃ§Ãµes para exibir listas
 void exibirLista(NoLista* lista, string titulo) {
     cout << "\n" << titulo << ":\n";
     cout << "----------------------------------------\n";
@@ -147,7 +146,7 @@ void liberarLista(NoLista* lista) {
 }
 
 void carregarDadosExemplo() {
-    // Não limpa mais a árvore atual, apenas adiciona
+    // NÃ£o limpa mais a Ã¡rvore atual, apenas adiciona
     inserirPessoa(Pessoa("Carlos", 'M', 25, 72.5));
     inserirPessoa(Pessoa("Ana", 'F', 30, 60.0));
     inserirPessoa(Pessoa("Bruno", 'M', 28, 80.3));
@@ -158,7 +157,7 @@ void carregarDadosExemplo() {
     inserirPessoa(Pessoa("Helena", 'F', 32, 58.9));
 }
 
-// Função para limpar a árvore (nova funcionalidade)
+// FunÃ§Ã£o para limpar a Ã¡rvore (nova funcionalidade)
 void limparArvore(NoArvore* node) {
     if (node == NULL) return;
     
@@ -172,7 +171,7 @@ void limparArvoreCompleta() {
     RAIZ = NULL;
 }
 
-// Função para ler número inteiro com tratamento de erro
+// FunÃ§Ã£o para ler nÃºmero inteiro com tratamento de erro
 int lerInteiro(const string& mensagem) {
     int valor;
     while (true) {
@@ -190,7 +189,7 @@ int lerInteiro(const string& mensagem) {
     }
 }
 
-// Função para ler número decimal com tratamento de erro
+// FunÃ§Ã£o para ler nÃºmero decimal com tratamento de erro
 double lerDecimal(const string& mensagem) {
     double valor;
     while (true) {
@@ -208,7 +207,7 @@ double lerDecimal(const string& mensagem) {
     }
 }
 
-// Função para ler caractere com tratamento de erro
+// FunÃ§Ã£o para ler caractere com tratamento de erro
 char lerChar(const string& mensagem) {
     string entrada;
     while (true) {
@@ -224,7 +223,6 @@ char lerChar(const string& mensagem) {
     }
 }
 
-// Funções do menu
 void limparTela() {
     system("cls");
 }
@@ -265,7 +263,6 @@ int main() {
         exibirCabecalho();
         exibirMenu();
         
-        // Ler opção com tratamento de erro
         cin >> opcao;
         if (cin.fail()) {
             cin.clear();
@@ -281,7 +278,7 @@ int main() {
                 break;
                 
             case 2:
-                // ALGORITMO PRINCIPAL do enunciado
+                // ALGORITMO PRINCIPAL
                 gerarListasOrdenadas(&listaHomens, &listaMulheres);
                 
                 cout << "\n? Listas geradas com sucesso!\n";
@@ -298,18 +295,14 @@ int main() {
                 
                 cout << "\n>>> INSERIR NOVA PESSOA <<<\n";
                 
-                // Ler nome
                 cout << "Nome: ";
                 cin.ignore();
                 getline(cin, nome);
                 
-                // Ler sexo com tratamento de erro
                 sexo = lerChar("Sexo (M/F): ");
                 
-                // Ler idade com tratamento de erro
                 idade = lerInteiro("Idade: ");
                 
-                // Ler peso com tratamento de erro
                 peso = lerDecimal("Peso: ");
                 
                 inserirPessoa(Pessoa(nome, sexo, idade, peso));
@@ -340,7 +333,6 @@ int main() {
         
     } while (opcao != 5);
     
-    // Liberar memoria
     liberarLista(listaHomens);
     liberarLista(listaMulheres);
     limparArvoreCompleta();
