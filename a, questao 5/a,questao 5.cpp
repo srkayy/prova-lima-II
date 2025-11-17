@@ -4,9 +4,9 @@ using namespace std;
 
 class Node {
 public:
-    int data;
-    Node* left;
-    Node* right;
+    int data;         
+    Node* left;          // Ponteiro para filho esquerdo
+    Node* right;         // Ponteiro para filho direito
 
     Node(int val) {
         data = val;
@@ -17,28 +17,31 @@ public:
 
 class BST {
 private:
-    Node* root;
+    Node* root;  // Raiz da arvore
 
+    // Funcao recursiva para inserir um valor na BST
     Node* insert(Node* node, int val) {
         if (node == NULL)
-            return new Node(val);
+            return new Node(val); // Cria novo no se chegar ao fim
         if (val < node->data)
-            node->left = insert(node->left, val);
+            node->left = insert(node->left, val);  // Insere na esquerda
         else if (val > node->data)
-            node->right = insert(node->right, val);
+            node->right = insert(node->right, val); // Insere na direita
         return node;
     }
 
+    // Verifica se a arvore eh cheia (todos os nos possuem 0 ou 2 filhos)
     bool isFull(Node* node) {
         if (node == NULL)
-            return true;
+            return true; // Arvore vazia eh considerada cheia
         if (node->left == NULL && node->right == NULL)
-            return true;
+            return true; 
         if (node->left != NULL && node->right != NULL)
-            return isFull(node->left) && isFull(node->right);
-        return false;
+            return isFull(node->left) && isFull(node->right); // Verifica recursivamente
+        return false; // Caso tenha apenas 1 filho
     }
 
+    // Percurso em ordem (esquerda - raiz - direita)
     void inOrder(Node* node) {
         if (node == NULL) return;
         inOrder(node->left);
@@ -53,6 +56,7 @@ public:
         root = insert(root, val);
     }
 
+    // Mostra a arvore em ordem
     void mostrar() {
         if (root == NULL)
             cout << "Arvore vazia.\n";
@@ -63,6 +67,7 @@ public:
         }
     }
 
+    // Chama verificacao de arvore cheia
     void verificarCheia() {
         if (isFull(root))
             cout << "\n[ OK ] A arvore eh CHEIA.\n";
@@ -70,6 +75,7 @@ public:
             cout << "\n[ X ] A arvore NAO eh cheia.\n";
     }
 
+    // Insere valores padrao na arvore
     void preCarregar() {
         int valores[] = {8, 4, 12, 2, 6, 10, 14};
         int tamanho = sizeof(valores) / sizeof(valores[0]);
@@ -89,7 +95,7 @@ void limparTela() {
 }
 
 int main() {
-    BST arvore;
+    BST arvore; // Instancia da arvore
     int opcao, valor;
 
     do {
@@ -111,17 +117,17 @@ int main() {
             case 1:
                 cout << "Digite o valor: ";
                 cin >> valor;
-                arvore.inserir(valor);
+                arvore.inserir(valor); 
                 cout << "Elemento inserido!\n";
                 break;
             case 2:
-                arvore.mostrar();
+                arvore.mostrar(); 
                 break;
             case 3:
-                arvore.verificarCheia();
+                arvore.verificarCheia(); // Verifica se eh cheia
                 break;
             case 4:
-                arvore.preCarregar();
+                arvore.preCarregar(); // Carrega valores padrao
                 break;
             case 0:
                 cout << "Saindo...\n";
