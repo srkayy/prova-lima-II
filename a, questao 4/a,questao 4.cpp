@@ -4,6 +4,7 @@
 #include <algorithm>
 using namespace std;
 
+
 class No {
 public:
     int valor;
