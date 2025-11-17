@@ -5,7 +5,7 @@
 #include <limits>
 using namespace std;
 
-// Estrutura Pessoa
+
 struct Pessoa {
     string nome;
     char sexo;
