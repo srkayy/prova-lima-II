@@ -21,7 +21,7 @@ struct Pessoa {
     }
 };
 
-// NÛ da ¡rvore AVL
+// N√≥ da √Årvore AVL
 struct NoAVL {
     Pessoa pessoa;
     NoAVL* esquerda;
@@ -36,13 +36,10 @@ struct NoAVL {
     }
 };
 
-// Ponteiro RAIZ conforme exigido no enunciado
+// Ponteiro RAIZ 
 NoAVL* RAIZ = NULL;
 
-// ==============================================
-// FUN«’ES AUXILIARES DA ¡RVORE AVL
-// ==============================================
-
+// FUN√á√ïES AUXILIARES DA √ÅRVORE AVL
 int altura(NoAVL* node) {
     return node == NULL ? 0 : node->altura;
 }
@@ -111,10 +108,7 @@ NoAVL* balancear(NoAVL* node) {
     return node;
 }
 
-// ==============================================
-// F1.: INSER«√O
-// ==============================================
-
+// F1-INSER√á√ÉO
 NoAVL* inserirAVL(NoAVL* node, Pessoa p) {
     if (node == NULL) {
         return new NoAVL(p);
@@ -125,7 +119,7 @@ NoAVL* inserirAVL(NoAVL* node, Pessoa p) {
     } else if (p.nome > node->pessoa.nome) {
         node->direita = inserirAVL(node->direita, p);
     } else {
-        // Nome duplicado - n„o permitido em AVL
+        // Nome duplicado - n√£o permitido em AVL
         cout << "Erro: Nome ja existe na arvore!\n";
         return node;
     }
@@ -137,10 +131,7 @@ void inserirPessoa(Pessoa p) {
     RAIZ = inserirAVL(RAIZ, p);
 }
 
-// ==============================================
-// F3.: REMO«√O
-// ==============================================
-
+// F3-REMO√á√ÉO
 NoAVL* menorNo(NoAVL* node) {
     NoAVL* current = node;
     while (current->esquerda != NULL)
@@ -156,7 +147,7 @@ NoAVL* removerAVL(NoAVL* node, string nome) {
     } else if (nome > node->pessoa.nome) {
         node->direita = removerAVL(node->direita, nome);
     } else {
-        // NÛ encontrado
+        // N√≥ encontrado
         if ((node->esquerda == NULL) || (node->direita == NULL)) {
             NoAVL* temp = node->esquerda ? node->esquerda : node->direita;
             
@@ -183,10 +174,8 @@ void removerPessoa(string nome) {
     RAIZ = removerAVL(RAIZ, nome);
 }
 
-// ==============================================
-// F4.: CONSULTA
-// ==============================================
 
+// F4-CONSULTA
 NoAVL* consultarAVL(NoAVL* node, string nome) {
     if (node == NULL || node->pessoa.nome == nome)
         return node;
@@ -210,10 +199,7 @@ void consultarPessoa(string nome) {
     }
 }
 
-// ==============================================
-// F2.: LISTAGEM (Apenas em Ordem - Essencial)
-// ==============================================
-
+// F2-LISTAGEM Apenas em Ordem
 void listarEmOrdem(NoAVL* node) {
     if (node != NULL) {
         listarEmOrdem(node->esquerda);
@@ -225,10 +211,7 @@ void listarEmOrdem(NoAVL* node) {
     }
 }
 
-// ==============================================
-// FUN«’ES AUXILIARES
-// ==============================================
-
+// FUN√á√ïES AUXILIARES
 void liberarArvore(NoAVL* node) {
     if (node == NULL) return;
     liberarArvore(node->esquerda);
@@ -236,7 +219,7 @@ void liberarArvore(NoAVL* node) {
     delete node;
 }
 
-// FunÁıes para leitura com tratamento de erro
+// Fun√ß√µes para leitura com tratamento de erro
 int lerInteiro(const string& mensagem) {
     int valor;
     while (true) {
@@ -286,10 +269,7 @@ char lerChar(const string& mensagem) {
     }
 }
 
-// ==============================================
-// FUN«√O PARA CARREGAR DADOS EXEMPLO
-// ==============================================
-
+// FUN√á√ÉO PARA CARREGAR DADOS EXEMPLO
 void carregarDadosExemplo() {
     inserirPessoa(Pessoa("Carlos", 'M', 25, 72.5));
     inserirPessoa(Pessoa("Ana", 'F', 30, 60.0));
@@ -301,10 +281,7 @@ void carregarDadosExemplo() {
     inserirPessoa(Pessoa("Helena", 'F', 32, 58.9));
 }
 
-// ==============================================
-// FUN«’ES DE INTERFACE DO MENU
-// ==============================================
-
+// FUN√á√ïES DE INTERFACE DO MENU
 void limparTela() {
     system("cls");
 }
@@ -339,10 +316,7 @@ void pausar() {
     cin.get();
 }
 
-// ==============================================
-// FUN«√O PRINCIPAL
-// ==============================================
-
+// FUN√á√ÉO PRINCIPAL
 int main() {
     int opcao;
     string nome;
@@ -360,7 +334,7 @@ int main() {
         }
         
         switch (opcao) {
-            case 1: // F1: INSER«√O
+            case 1: // F1: INSER√á√ÉO
                 {
                     string nome;
                     char sexo;
@@ -395,7 +369,7 @@ int main() {
                 pausar();
                 break;
                 
-            case 3: // F3: REMO«√O
+            case 3: // F3: REMO√á√ÉO
                 cout << "\n>>> REMOVER PESSOA <<<\n";
                 cout << "Nome para remover: ";
                 cin.ignore();
@@ -422,7 +396,7 @@ int main() {
                 pausar();
                 break;
                 
-            case 6: // Limpar ·rvore
+            case 6: // Limpar √°rvore
                 liberarArvore(RAIZ);
                 RAIZ = NULL;
                 cout << "\n? Arvore limpa!\n";
@@ -441,7 +415,7 @@ int main() {
         
     } while (opcao != 0);
     
-    // Liberar memÛria
+    // Liberar mem√≥ria
     liberarArvore(RAIZ);
     
     return 0;
