@@ -3,29 +3,29 @@
 
 using namespace std;
 
-// Construtor do nÛ
+// Construtor do n√≥
 Node::Node(int value) : key(value), left(NULL), right(NULL) {}
 
-// Construtor da BST - ·rvore vazia
+// Construtor da BST - √°rvore vazia
 BST::BST() : root(NULL) {}
 
-// Destrutor - libera memÛria
+// Destrutor 
 BST::~BST() {
     clear();
 }
 
-// ==================== FUN«√O F1: INSER«√O ====================
+// fun√ß√£o 1 - inser√ß√£o
 Node* BST::insertRecursive(Node* node, int key) {
-    // Se encontrou posiÁ„o vazia, cria novo nÛ
+    // Se encontrou posi√ß√£o vazia, cria novo n√≥
     if (node == NULL) {
         return new Node(key);
     }
     
-    // Insere na sub·rvore esquerda se for menor
+    // Insere na sub√°rvore esquerda se for menor
     if (key < node->key) {
         node->left = insertRecursive(node->left, key);
     } 
-    // Insere na sub·rvore direita se for maior
+    // Insere na sub√°rvore direita se for maior
     else if (key > node->key) {
         node->right = insertRecursive(node->right, key);
     }
@@ -38,7 +38,7 @@ void BST::insert(int key) {
     cout << "\n  Valor " << key << " inserido com sucesso!";
 }
 
-// ==================== FUN«√O F2: LISTAGEM ====================
+// f2-listar
 void BST::inOrderRecursive(Node* node) {
     if (node != NULL) {
         inOrderRecursive(node->left);
@@ -56,9 +56,9 @@ void BST::inOrder() {
     inOrderRecursive(root);
 }
 
-// ==================== FUN«√O F3: REMO«√O ====================
+// f3 - remover
 Node* BST::findMin(Node* node) {
-    // Encontra o menor valor (mais ‡ esquerda)
+    // o menor valor, mais √† esquerda
     while (node->left != NULL) {
         node = node->left;
     }
@@ -68,15 +68,15 @@ Node* BST::findMin(Node* node) {
 Node* BST::removeRecursive(Node* node, int key) {
     if (node == NULL) return NULL;
 
-    // Busca o nÛ a ser removido
+    // procura o n√≥ q foi removido
     if (key < node->key) {
         node->left = removeRecursive(node->left, key);
     } else if (key > node->key) {
         node->right = removeRecursive(node->right, key);
     } else {
-        // NÛ encontrado - trata os 3 casos de remoÁ„o
+        // N√≥ encontrado - trata os 3 casos de remo√ß√£o
         
-        // Caso 1: NÛ sem filho ou com apenas um filho
+        // Caso 1: N√≥ sem filho ou com apenas um filho
         if (node->left == NULL) {
             Node* temp = node->right;
             delete node;
@@ -87,7 +87,7 @@ Node* BST::removeRecursive(Node* node, int key) {
             return temp;
         }
         
-        // Caso 2: NÛ com dois filhos
+        // Caso 2: N√≥ com dois filhos
         // Encontra o sucessor in-order (menor da direita)
         Node* temp = findMin(node->right);
         node->key = temp->key; // Copia o valor
@@ -106,7 +106,7 @@ void BST::remove(int key) {
     }
 }
 
-// ==================== FUN«’ES AUXILIARES ====================
+// funcoes auxiliares
 bool BST::searchRecursive(Node* node, int key) {
     if (node == NULL) return false;
     
@@ -120,13 +120,13 @@ bool BST::search(int key) {
 }
 
 void BST::clear() {
-    // FunÁ„o simplificada para limpar a ·rvore
-    // Em uma implementaÁ„o completa, seria recursiva
+    // Fun√ß√£o simplificada para limpar a √°rvore
+    // Em uma implementa√ß√£o completa, seria recursiva
     root = NULL;
 }
 
 void BST::loadDefaultValues() {
-    clear(); // Limpa ·rvore atual
+    clear(); // Limpa √°rvore atual
     
     // Valores do item (a): 20, 5, 12, 36, 27, 45, 9, 2, 6, 17, 40
     int valores[] = {20, 5, 12, 36, 27, 45, 9, 2, 6, 17, 40};
