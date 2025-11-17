@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstdlib> // <-- necessario para usar system()
+#include <cstdlib> 
 using namespace std;
 
 class Node {
