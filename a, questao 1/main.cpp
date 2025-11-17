@@ -1,10 +1,10 @@
 #include "BST.h"
 #include <iostream>
-#include <cstdlib> // Para system("clear") ou system("cls")
+#include <cstdlib> 
 
 using namespace std;
 
-// Função para limpar a tela (funciona em Windows e Linux)
+// limpar a tela
 void clearScreen() {
     #ifdef _WIN32
         system("cls");
@@ -13,14 +13,14 @@ void clearScreen() {
     #endif
 }
 
-// Desenha um cabeçalho bonito
+
 void drawHeader() {
     cout << "=========================================\n";
     cout << "      ARVORE BINARIA DE BUSCA\n";
     cout << "=========================================\n";
 }
 
-// Desenha o menu principal
+
 void drawMenu() {
     cout << "\n    >>> MENU PRINCIPAL <<<\n";
     cout << "    ----------------------\n";
@@ -34,7 +34,7 @@ void drawMenu() {
     cout << "    Escolha uma opcao: ";
 }
 
-// Função para pausar e esperar Enter
+
 void waitForEnter() {
     cout << "\n    Pressione ENTER para continuar...";
     cin.ignore();
@@ -53,7 +53,7 @@ int main() {
         cin >> opcao;
         
         switch (opcao) {
-            case 1: // INSERÇÃO
+            case 1: // INSERÃ‡ÃƒO
                 clearScreen();
                 drawHeader();
                 cout << "\n    >>> 1 - INSERCAO <<<\n";
@@ -73,7 +73,7 @@ int main() {
                 waitForEnter();
                 break;
                 
-            case 3: // REMOÇÃO
+            case 3: // REMOÃ‡ÃƒO
                 do {
                     clearScreen();
                     drawHeader();
