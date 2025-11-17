@@ -9,6 +9,7 @@ Node::Node(int value) : key(value), left(NULL), right(NULL) {}
 // Construtor da BST - árvore vazia
 BST::BST() : root(NULL) {}
 
+
 // Destrutor 
 BST::~BST() {
     clear();
