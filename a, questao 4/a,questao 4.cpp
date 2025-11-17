@@ -109,12 +109,11 @@ public:
             cout << "\n\nOBSERVACOES SOBRE REPETICOES:\n";
             cout << "----------------------------------------\n";
             
-            // Coletar e mostrar informações sobre repetições
-            vector<pair<int, int> > ocorrencias; // CORREÇÃO: espaço entre > >
+            // Coletar e mostrar informaÃ§Ãµes sobre repetiÃ§Ãµes
+            vector<pair<int, int> > ocorrencias;
             coletarOcorrencias(raiz, ocorrencias);
             
             bool temRepeticao = false;
-            // CORREÇÃO: substituído 'auto' por iterator explícito
             for (vector<pair<int, int> >::iterator it = ocorrencias.begin(); it != ocorrencias.end(); ++it) {
                 if (it->second > 1) {
                     cout << "- Valor " << it->first << " aparece " << it->second << " vezes\n";
@@ -130,10 +129,9 @@ public:
         }
     }
 
-    void coletarOcorrencias(No* no, vector<pair<int, int> >& ocorrencias) { // CORREÇÃO: espaço entre > >
+    void coletarOcorrencias(No* no, vector<pair<int, int> >& ocorrencias) { // CORREÃ‡ÃƒO: espaÃ§o entre > >
         if (no != NULL) {
             coletarOcorrencias(no->esq, ocorrencias);
-            // CORREÇÃO: substituída inicialização com {} por make_pair
             ocorrencias.push_back(make_pair(no->valor, no->cont));
             coletarOcorrencias(no->dir, ocorrencias);
         }
